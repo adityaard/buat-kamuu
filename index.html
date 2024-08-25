@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>❤️❤️❤️</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <div class="header-container">
+        <h1>Progress kamu dari dulu sampe sekarang!!! (Maaf Cuma Foto Kamu Doang)</h1>
+    </div>
+
+    <div class="love-bar-container">
+        <div class="love-bar" id="love-bar"></div>
+    </div>
+
+    <div class="photos-container" id="photos-container">
+        <!-- foto ardel -->
+    </div>
+
+    <!-- <div class="heart-container" id="heart-container">
+
+    </div> -->
+    <div class="heart-container">
+        <!-- Banyak love efek -->
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+    </div>
+
+    <script>
+        // js foto
+        const container = document.getElementById('photos-container');
+
+        for (let i = 1; i <= 45; i++) {
+
+            const photoDiv = document.createElement('div');
+            photoDiv.className = 'photo';
+
+
+            const img = document.createElement('img');
+            img.src = `images/${i}.jpg`;
+            img.alt = `Foto ${i}`;
+
+
+            photoDiv.appendChild(img);
+
+
+            container.appendChild(photoDiv);
+
+
+            if (i < 45) {
+                const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                svg.className = 'connector';
+                svg.setAttribute("viewBox", "0 0 100 100"); // Mengatur ukuran viewBox lebih kecil
+
+                const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                //    garis
+                path.setAttribute("d", "M 50 0 C 60 30, 40 70, 50 100");
+                path.setAttribute("stroke", "#ff3366");
+                path.setAttribute("stroke-width", "4");
+                path.setAttribute("stroke-dasharray", "8,8");
+                path.setAttribute("fill", "none");
+
+
+                svg.appendChild(path);
+
+                container.appendChild(svg);
+            }
+        }
+
+        // heart
+        // function addHearts() {
+        //     const heartContainer = document.getElementById('heart-container');
+        //     for (let i = 0; i < 20; i++) { // Menambahkan 20 hati sebagai contoh
+        //         const heartDiv = document.createElement('div');
+        //         heartDiv.className = 'heart';
+        //         heartDiv.style.top = `${Math.random() * 100}vh`;
+        //         heartDiv.style.left = `${Math.random() * 100}vw`;
+        //         heartDiv.style.animationDelay = `${Math.random() * 10}s`;
+        //         heartContainer.appendChild(heartDiv);
+        //     }
+        // }
+        // function addHearts() {
+        //     const heartContainer = document.getElementById('heart-container');
+        //     const heartImages = [
+        //         'https://tenor.com/bPZcf.gif',
+        //         'https://media.giphy.com/media/3o7btQ71K7qEwlq6yU/giphy.gif',
+        //         'https://media.giphy.com/media/l2JdP2MQgHpaHvdRQ/giphy.gif'
+        //     ];
+
+        //     for (let i = 0; i < 40; i++) { // Menambahkan 40 hati sebagai contoh
+        //         const heartDiv = document.createElement('div');
+        //         heartDiv.className = 'heart';
+        //         heartDiv.style.backgroundImage = `url('${heartImages[Math.floor(Math.random() * heartImages.length)]}')`;
+        //         heartDiv.style.top = `${Math.random() * 100}vh`;
+        //         heartDiv.style.left = `${Math.random() * 100}vw`;
+        //         heartDiv.style.animationDelay = `${Math.random() * 10}s`;
+        //         heartContainer.appendChild(heartDiv);
+        //     }
+        // }
+        function addHearts() {
+            const heartContainer = document.getElementById('heart-container');
+            const heartImages = [
+                '<iframe src="https://giphy.com/embed/mfGINH3O4cF3Ws5TUC" width="480" height="480" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/stickers/transparent-heart-texture-mfGINH3O4cF3Ws5TUC">via GIPHY</a></p>',
+                'https://media.giphy.com/media/10dU7w8E7m1w1K/giphy.gif',
+                'https://media.giphy.com/media/xT0xezQ7gk8THFeO6I/giphy.gif'
+            ];
+
+            for (let i = 0; i < 40; i++) { // Menambahkan 40 hati sebagai contoh
+                const heartDiv = document.createElement('div');
+                heartDiv.className = 'heart';
+                heartDiv.style.backgroundImage = `url('${heartImages[Math.floor(Math.random() * heartImages.length)]}')`;
+                heartDiv.style.top = `${Math.random() * 100}vh`;
+                heartDiv.style.left = `${Math.random() * 100}vw`;
+                heartDiv.style.animationDelay = `${Math.random() * 10}s`;
+                heartContainer.appendChild(heartDiv);
+            }
+        }
+
+        // scroll bar
+        window.addEventListener('scroll', function () {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            document.getElementById('love-bar').style.width = scrollPercent + '%';
+
+            // Update love-bar width
+            document.getElementById('love-bar').style.width = scrollPercent + '%';
+
+            // heart 100%   
+            if (scrollPercent >= 100) {
+                addHearts();
+            }
+        });
+    </script>
+</body>
+
+</html>
